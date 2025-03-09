@@ -38,6 +38,7 @@ void main() {
 
     vec3 center = vPosition[0] + vMidOffset[0] + cameraPositionFract;
     ivec3 voxelPos = ivec3(floor(center)) + HALF_VOXEL_VOLUME_SIZE;
+    if (clamp(voxelPos, ivec3(0, 0, 0), VOXEL_VOLUME_SIZE - 1) != voxelPos) return;
 
     uint index = atomicAdd(quadBuffer.count, 1u);
     entry.next = imageAtomicExchange(voxelBuffer, voxelPos, index + 1u);
