@@ -24,7 +24,7 @@ bool intersectsVoxel(sampler2D atlas, vec3 origin, vec3 direction, uint pointer)
 		pLocal.xy /= vec2(entry.tangent.w, entry.bitangent.w);
 		if (clamp(pLocal.xy, 0.0, 1.0) != pLocal.xy) continue;
 
-		vec2 uv = entry.uv0 + entry.duvx * pLocal.x + entry.duvy * pLocal.y;
+		vec2 uv = mix(entry.uv0, entry.uv1, pLocal.xy);
 		vec4 albedo = textureLod(atlas, uv, 0);
 		if (albedo.a < 0.1) continue;
 
@@ -94,7 +94,7 @@ bool traceVoxel(sampler2D atlas, vec3 origin, vec3 direction, uint pointer, inou
 		pLocal.xy /= vec2(entry.tangent.w, entry.bitangent.w);
 		if (clamp(pLocal.xy, 0.0, 1.0) != pLocal.xy) continue;
 
-		vec2 uv = entry.uv0 + entry.duvx * pLocal.x + entry.duvy * pLocal.y;
+		vec2 uv = mix(entry.uv0, entry.uv1, pLocal.xy);
 		vec4 albedo = textureLod(atlas, uv, 0);
 		if (albedo.a < 0.1) continue;
 

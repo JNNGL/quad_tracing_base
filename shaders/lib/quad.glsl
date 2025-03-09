@@ -6,8 +6,7 @@ struct quad_entry {
     vec4 tangent;
     vec4 bitangent;
     vec2 uv0;
-    vec2 duvx;
-    vec2 duvy;
+    vec2 uv1;
     uint tint;
     uint next;
 };

@@ -24,8 +24,7 @@ void main() {
     entry.tangent.xyz = vPosition[2] - vPosition[1];
     entry.bitangent.xyz = vPosition[0] - vPosition[1];
     entry.uv0 = vUV[1];
-    entry.duvx = vUV[2] - vUV[1];
-    entry.duvy = vUV[0] - vUV[1];
+    entry.uv1 = vUV[2] + vUV[0] - vUV[1];
     entry.tint = packUnorm4x8(vColor[0]);
 
     vec3 vPos3 = entry.point.xyz + entry.tangent.xyz + entry.bitangent.xyz;
