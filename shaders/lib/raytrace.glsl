@@ -99,7 +99,7 @@ bool traceVoxel(sampler2D atlas, vec3 origin, vec3 direction, uint pointer, inou
 		if (albedo.a < 0.1) continue;
 
 		it.t = t;
-		it.normal = sign(d) * normal;
+		it.normal = -sign(d) * normal;
 		it.albedo = albedo * unpackUnorm4x8(entry.tint);
 		it.uv = uv;
 	}
